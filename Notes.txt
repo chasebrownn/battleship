@@ -1,0 +1,17 @@
+when program starts do these things in order:
+1. create ships (structs: name, health: 2-5, pos: coordinates[], side: player or bot)
+2. bot randomly places ships on board coordinates
+3. Display board
+4. player places ships on coordinates (one by one)
+5. player chooses location of BOT ships
+6. BOT makes a randomized guess using randomizer
+7. back and forth until someone wins
+
+Requirements:
+- Track ship health somehow
+  - for both bot and player ships
+- Track ship locations for both teams
+- implement a randomizer the bot can call
+- error handling
+  - nobody can guess same coordinate twice
+- how do we create a dynamic board?
