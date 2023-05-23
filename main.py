@@ -30,6 +30,24 @@ def print_board(board):
     for row in board: 
         print(" ".join(row))
 
+def print_boards(bot_board, player_board):
+    """Print the game board"""
+    print("")
+    print("  A B C D E F G H I J")
+    print("  *******************")
+
+    row_num=0
+    for row in bot_board: 
+        print(row_num, " ".join(row))
+        row_num+=1
+
+    print("  -------------------")
+    
+    row_num=0
+    for row in player_board: 
+        print(row_num, " ".join(row))
+        row_num+=1
+
 def place_ships(board):
     """Place a ship on the board"""
     for ship in botShips:
@@ -118,17 +136,23 @@ def main():
     createShips()
     print("Ships created")
 
-    # declare board
+    # declare bot board
     bot_board = create_board(board_size)
-    print("board created")
+    print("bot board created")
+
+    # declare player board
+    player_board = create_board(board_size)
+    print("player board created")
 
     # declare bot instance
     place_ships(bot_board)
+    print("randomly generated bot ship locations")
 
     # bot chooses ship locations
 
     # for testing, we'll just place one ship
 
-    print_board(bot_board)
+    #print_board(bot_board)
+    print_boards(bot_board, player_board)
 
 main()
