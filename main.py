@@ -142,6 +142,7 @@ def main():
 
     # declare player board
     player_board = create_board(board_size)
+    guess_board = create_board(board_size)
     print("player board created")
 
     # declare bot instance
