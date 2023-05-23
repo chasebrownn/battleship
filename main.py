@@ -43,6 +43,18 @@ def createShips():
     botShips.append(Ship("Submarine", 3))
     botShips.append(Ship("Destroyer", 2))
 
+def createShips():
+    playerShips.append(Ship("Carrier", 5))
+    playerShips.append(Ship("Battleship", 4))
+    playerShips.append(Ship("Cruiser", 3))
+    playerShips.append(Ship("Submarine", 3))
+    playerShips.append(Ship("Destroyer", 2))
+    botShips.append(Ship("Carrier", 5))
+    botShips.append(Ship("Battleship", 4))
+    botShips.append(Ship("Cruiser", 3))
+    botShips.append(Ship("Submarine", 3))
+    botShips.append(Ship("Destroyer", 2))
+
 def main():
     print("Welcome to Battleship!")
 
