@@ -53,20 +53,20 @@ def place_ships(board):
                         board[tempX][y] = ship.letter
                         tempX+=1
 
-            elif y + ship.hitPoints - 1 < board_size:
+            elif y - ship.hitPoints - 1 >= 0:
                 tempY = y
                 for i in range(ship.hitPoints):
-                    if board[x][tempY] == empty_space:
+                    if board[x][y] == empty_space:
                         room = True
                     else:
                         room = False
                         break
-                    y+=1
+                    y-=1
                 if room == True:
                     tempY = y
                     for i in range(ship.hitPoints):
                         board[x][tempY] = ship.letter
-                        tempY+=1
+                        tempY-=1
 
             elif x - ship.hitPoints - 1 >= 0:
                 tempX = x
@@ -83,20 +83,20 @@ def place_ships(board):
                         board[tempX][y] = ship.letter
                         tempX-=1
 
-            elif y - ship.hitPoints - 1 >= 0:
+            elif y + ship.hitPoints - 1 < board_size:
                 tempY = y
                 for i in range(ship.hitPoints):
-                    if board[x][y] == empty_space:
+                    if board[x][tempY] == empty_space:
                         room = True
                     else:
                         room = False
                         break
-                    y-=1
+                    y+=1
                 if room == True:
                     tempY = y
                     for i in range(ship.hitPoints):
                         board[x][tempY] = ship.letter
-                        tempY-=1
+                        tempY+=1
         
     # bot places carrier
     # bot places battleship
