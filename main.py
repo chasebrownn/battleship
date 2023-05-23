@@ -50,15 +50,20 @@ def print_boards(bot_board, player_board):
 
 def place_ships(board):
     """Place a ship on the board"""
+    # iterate through all ships in botShips
     for ship in botShips:
+        # before placing ships ensure there is room for the ship after choosing the random coordinate
         room = False
         while room == False:
+            # choose random coordinate
             x = random.randint(0, board_size - 1)
             y = random.randint(0, board_size - 1)
 
+            # is there room for the ship below the coordinate?
             if x + ship.hitPoints - 1 < board_size:
                 tempX = x
                 for i in range(ship.hitPoints):
+                    # check if there's an existing ship here
                     if board[tempX][y] == empty_space:
                         room = True
                     else:
@@ -67,10 +72,12 @@ def place_ships(board):
                     tempX+=1
                 if room == True:
                     tempX = x
+                    # place ship
                     for i in range(ship.hitPoints):
                         board[tempX][y] = ship.letter
                         tempX+=1
 
+            # is there room for the ship to the left of the coordinate?
             elif y - ship.hitPoints - 1 >= 0:
                 tempY = y
                 for i in range(ship.hitPoints):
@@ -86,6 +93,7 @@ def place_ships(board):
                         board[x][tempY] = ship.letter
                         tempY-=1
 
+            # is there room for the ship above the coordinate?
             elif x - ship.hitPoints - 1 >= 0:
                 tempX = x
                 for i in range(ship.hitPoints):
@@ -101,6 +109,7 @@ def place_ships(board):
                         board[tempX][y] = ship.letter
                         tempX-=1
 
+            # is there room for the ship to the right of the coordinate?
             elif y + ship.hitPoints - 1 < board_size:
                 tempY = y
                 for i in range(ship.hitPoints):
@@ -151,7 +160,6 @@ def main():
 
     # bot chooses ship locations
 
-    # for testing, we'll just place one ship
 
     #print_board(bot_board)
     print_boards(bot_board, player_board)
