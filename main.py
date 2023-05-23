@@ -11,11 +11,13 @@ class Ship:
         self.position = []
 
 playerShips = []
+playerHealth = 17
+
 botShips = []
+botHealth = 17
 
 board_size = 10
 empty_space = 'O'
-ship_space ='S'
 hit_space = 'X'
 
 # functions
@@ -30,9 +32,7 @@ def print_board(board):
 
 def place_ships(board):
     """Place a ship on the board"""
-    # for now, we'll just place the ship at a random location
     for ship in botShips:
-        
         room = False
         while room == False:
             x = random.randint(0, board_size - 1)
@@ -61,7 +61,7 @@ def place_ships(board):
                     else:
                         room = False
                         break
-                    y-=1
+                    tempY-=1
                 if room == True:
                     tempY = y
                     for i in range(ship.hitPoints):
@@ -97,12 +97,6 @@ def place_ships(board):
                     for i in range(ship.hitPoints):
                         board[x][tempY] = ship.letter
                         tempY+=1
-        
-    # bot places carrier
-    # bot places battleship
-    # bot places cruiser
-    # bot places submarine
-    # bot places destroyer
 
 def createShips():
     playerShips.append(Ship("Carrier", 5, "C"))
@@ -125,16 +119,16 @@ def main():
     print("Ships created")
 
     # declare board
-    board = create_board(board_size)
+    bot_board = create_board(board_size)
     print("board created")
 
     # declare bot instance
-    place_ships(board)
+    place_ships(bot_board)
 
     # bot chooses ship locations
 
     # for testing, we'll just place one ship
 
-    print_board(board)
+    print_board(bot_board)
 
 main()
