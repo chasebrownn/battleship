@@ -127,6 +127,7 @@ def place_ships(board):
                     tempX = x
                     for i in range(ship.hitPoints):
                         board[tempX][y] = ship.letter
+                        ship.position.append(Coordinate(tempX, y))
                         tempX-=1
 
             # is there room for the ship to the right of the coordinate?
@@ -143,6 +144,7 @@ def place_ships(board):
                     tempY = y
                     for i in range(ship.hitPoints):
                         board[x][tempY] = ship.letter
+                        ship.position.append(Coordinate(x, tempY))
                         tempY+=1
 
 def createShips():
