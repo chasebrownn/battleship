@@ -4,7 +4,7 @@ import random
 import constants
 
 
-# state variables
+# state variables and objects
 
 class Coordinate:
     def __init__(self, x, y):
@@ -23,6 +23,14 @@ class Ship:
     
     def __str__(self):
         return f"{self.shipClass}"
+    
+SHIP_TYPES = [
+    ("Carrier", 5, "C"),
+    ("Battleship", 4, "B"),
+    ("Cruiser", 3, "C"),
+    ("Submarine", 3, "S"),
+    ("Destroyer", 2, "D"),
+]
 
 playerShips = []
 playerHealth = 17
@@ -148,16 +156,9 @@ def place_ships(board):
                         tempY+=1
 
 def createShips():
-    playerShips.append(Ship("Carrier", 5, "A"))
-    playerShips.append(Ship("Battleship", 4, "B"))
-    playerShips.append(Ship("Cruiser", 3, "C"))
-    playerShips.append(Ship("Submarine", 3, "S"))
-    playerShips.append(Ship("Destroyer", 2, "D"))
-    botShips.append(Ship("Carrier", 5, "A"))
-    botShips.append(Ship("Battleship", 4, "B"))
-    botShips.append(Ship("Cruiser", 3, "C"))
-    botShips.append(Ship("Submarine", 3, "S"))
-    botShips.append(Ship("Destroyer", 2, "D"))
+    for ship_class, hit_points, letter in SHIP_TYPES:
+        playerShips.append(Ship(ship_class, hit_points, letter))
+        botShips.append(Ship(ship_class, hit_points, letter))
 
 def main():
     print("Welcome to Battleship!")
